@@ -1,0 +1,54 @@
+<div class="col-md-4 col-sm-4 mb">
+    <div class="green-panel pn">
+        <div class="green-header">
+            <h5 class="pull-left">{{name}} 
+                <a href="javascript:;" popover-html-unsafe="{{desc}}" popover-trigger="mouseenter" popover-title="{{name}}标准({{unit}})" popover-placement="right"><i class="fa fa-question-circle"></i></a>
+            </h5>
+
+            <div class="pull-right">
+                <h5><span ng-class="{up:'label label-success',down : 'label label-warning',default:'label label-success'}[trendsStatus]"><i ng-class="{up:'fa fa-arrow-up',down:'fa fa-arrow-down',default:''}[trendsStatus]"></i>  {{value.length == 0 ? 0 : Math.abs(trends)}}</span></h5>
+            </div>
+        </div>
+        <style type="text/css">
+       .circle-progress{
+            position: absolute;
+            line-height: 1;
+            top: 50%;
+            bottom: auto;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            font-size: 40.7143px;
+        }
+    </style>
+    <div ng-if="value.length > 0" class="circle-progress">
+    <div style="color:black;">{{preciseCurrent||current}}</div>  
+    </div> 
+
+    <div ng-if="value.length == 0" class="circle-progress">
+    <p>暂无评分</p> 
+    </div> 
+      <div
+    round-progress
+    max="max"
+    current="current"
+    color="#5AAAE8"
+    bgcolor="#E2E1DF"
+    radius="60"
+    stroke="{{value.length == 0 ? 0 : 15}}"
+    semi="false"
+    rounded="true"
+    clockwise="true"
+    responsive="false"
+    duration="800"
+    animation="easeInOutQuart"
+    on-render="showPreciseCurrent"
+    animation-delay="0"></div>
+        
+        <footer>
+            <div style="margin-top: 10px;">
+                <h5 style="display: inline;"> <a href="javascript:;" id="{{id}}" uib-popover="{{calculation}}" popover-trigger="mouseenter" popover-title="计算公式"> <i class="fa fa-question-circle"></i></a> 实际值： <h4 ng-if="value.length > 0" style="display: inline;">{{value}} {{unit}}</h4>
+                <h4 ng-if="value.length==0" style="display: inline;">暂无数据</h4></h5>
+            </div>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">性能报表</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div>
+<div class="row">
+    <div class="col-lg-6 col-sm-12" id="line-chart">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+        <div style="float: left;margin-top:10px">
+          <strong style="margin-right:10px">
+            <span class="glyphicon glyphicon-th"></span>
+              得分走势
+          </strong>
+        </div>
+       
+          <div class="input-group">
+            <span class="input-group-addon">
+              <li class="fa fa-calendar"></li>
+            </span>
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="startDateScore" required="required">
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="endDateScore" required="required">
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button" ng-click="query(startDateScore,endDateScore,'score')">Go!</button>
+            </span> 
+
+            
+          </div>
+          
+      </div>
+            <div class="panel-body">
+                <highchart id="score" config="scoreChartConfig"></highchart>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="bar-chart">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+        <div style="float: left;margin-top:10px">
+          <strong style="margin-right:10px">
+            <span class="glyphicon glyphicon-th"></span>
+              页面大小
+          </strong>
+        </div>
+       
+          <div class="input-group">
+            <span class="input-group-addon">
+              <li class="fa fa-calendar"></li>
+            </span>
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="startDatePageSize" required="required">
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="endDatePageSize" required="required">
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button" ng-click="query(startDatePageSize,endDatePageSize,'pageCs')">Go!</button>
+            </span> 
+
+            
+          </div>
+          
+      </div>
+            <div class="panel-body">
+                <highchart id="pageCs" config="pageCsChartConfig"></highchart>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+        <div style="float: left;margin-top:10px">
+          <strong style="margin-right:10px">
+            <span class="glyphicon glyphicon-th"></span>
+              首屏渲染时间
+          </strong>
+        </div>
+       
+          <div class="input-group">
+            <span class="input-group-addon">
+              <li class="fa fa-calendar"></li>
+            </span>
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="startDateFRT" required="required">
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="endDateFRT" required="required">
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button" ng-click="query(startDateFRT,endDateFRT,'firstRenderTime')">Go!</button>
+            </span> 
+
+            
+          </div>
+          
+      </div>
+            <div class="panel-body">
+                <highchart id="firstRenderTime" config="FRTChartConfig"></highchart>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+        <div style="float: left;margin-top:10px">
+          <strong style="margin-right:10px">
+            <span class="glyphicon glyphicon-th"></span>
+              资源分布
+          </strong>
+        </div>
+       
+          <div class="input-group">
+            <span class="input-group-addon">
+              <li class="fa fa-calendar"></li>
+            </span>
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="startDateCsDetail" required="required">
+            
+            <input ui-date="dataOptions" class="form-control" style="width: 110px; border-left: 0" uib-datepicker-popup="yyyy-MM-dd" format-day-title="yyyy-MM" ng-model="endDateCsDetail" required="required">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{pageCsDetailSelected}} <span class="caret"></span></button>
+                <ul class="dropdown-menu pull-right">
+                  <li ng-repeat="page in pages">
+                   <a ng-click="dropboxitemselected(page.pageName,'pageCsDetailSelected')">{{page.pageName}}</a>
+                </ul>
+          </span>
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button" ng-click="query(startDateCsDetail,endDateCsDetail,'pageCsDetail')">Go!</button>
+            </span> 
+
+            
+          </div>
+          
+      </div>
+            <div class="panel-body">
+                <div id="pageCsDetail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-lg-6 col-sm-12" id="doughnut-chart" >
+        <div class="panel panel-default">
+            <div class="panel-heading">Doughnut Chart</div>
+            <div class="panel-body">
+            <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="donut.data" labels="donut.labels" legend="false"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="radar-chart" >
+        <div class="panel panel-default">
+            <div class="panel-heading">Radar Chart</div>
+            <div class="panel-body">
+                <canvas id="area" class="chart chart-radar" data="radar.data" labels="radar.labels" click="onClick"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="pie-chart" >
+        <div class="panel panel-default">
+            <div class="panel-heading">Pie Chart</div>
+            <div class="panel-body">
+                <canvas id="pie" class="chart chart-pie chart-xs" data="pie.data" labels="pie.labels"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="polar area-chart" >
+      <div class="panel panel-default">
+        <div class="panel-heading">Polar Area Chart</div>
+        <div class="panel-body">
+          <canvas id="polar" class="chart chart-polar-area" data="polar.data" labels="polar.labels"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12" id="base-chart">
+        <div class="panel panel-default">
+            <div class="panel-heading">Dynamic Chart</div>
+            <div class="panel-body">
+            <canvas id="base" class="chart chart-base" chart-type="dynamic.type" data="dynamic.data" labels="dynamic.labels" legend="true"></canvas>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary pull-right" ng-click="dynamic.toggle()">Toggle</button>
+    </div>
+</div> -->
+
+</div>

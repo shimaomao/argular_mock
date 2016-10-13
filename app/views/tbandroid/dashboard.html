@@ -1,0 +1,44 @@
+<div ui-view>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class='page-header'>
+                <div class='btn-toolbar pull-right'>
+                    <div class="btn-group"> 
+                        <a class="btn btn-rounded btn-success dropdown-toggle" data-toggle="dropdown">版本 {{selectedVersion}} 
+                            <span class="caret"></span>
+                        </a> 
+                        <ul class="dropdown-menu text-left pull-right"> 
+                            <li ng-repeat="version in versions">
+                                <a ng-href="" data-ng-click="dropboxitemselected(version)">{{version.name}}</a>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+                <h1>淘宝阅读Android客户端</h1>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+   
+
+    <div class="row m-b"> 
+      
+      <circlechart col="4" num="{{production_quality.trends}}" title="产品质量得分" type="info" icon="line-chart" current="{{production_quality.score}}" max="{{production_quality.max}}" color="#45ccce" goto="#/dashboard/tbandroid/detail/{{selectedVersionId}}/product_quality"></circlechart>
+      <circlechart col="4" num="{{process_quality.trends}}" title="过程质量得分" type="primary" icon="server" current="{{process_quality.score}}" max="{{process_quality.max}}" color="#D5EC56" goto="#/dashboard/tbandroid/detail/{{selectedVersionId}}/process_quality"></circlechart>
+      <circlechart col="4" num="{{develop_quality.trends}}" title="研发质量得分" type="warning" icon="tasks" current="{{develop_quality.score}}" max="{{develop_quality.max}}" color="#E55045" goto="#/dashboard/tbandroid/detail/{{selectedVersionId}}/dev_quality"></circlechart>
+
+      <mchart col="12" num="{{crashInfo}} %" title="线上崩溃率" type="success" icon="signal" chartid="crashInfo" chartconfig="crashChartConfig"></mchart>
+      
+      <mchart col="12" num="{{versionScore}} 分" title="版本质量得分走势" type="primary" icon="signal" chartid="versionScore" chartconfig="scoreChartConfig"></mchart>
+      
+      <mchart col="12" num="{{perfScore}} 分" title="性能综合评分" type="info" icon="list-ul" chartid="perfScore" chartconfig="perfChartConfig"></mchart>
+      
+    </div>
+
+</div>    
+    
+
+
+

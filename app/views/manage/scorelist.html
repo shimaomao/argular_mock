@@ -1,0 +1,82 @@
+<div ui-view>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">评分规则管理</h1>
+    </div>  
+    <!-- /.col-lg-12 -->
+</div>
+
+
+
+<div role="tabpanel" class="tab-pane active panel panel-info" id="ruleList" style="margin-top:20px">
+      <div class="panel-heading">
+        <div style="float: left;margin-top:10px">
+          <strong style="margin-right:10px">
+            <span class="glyphicon glyphicon-th"></span>
+              规则列表
+          </strong>
+        </div>
+       
+          <div class="input-group">
+            <span class="input-group-addon">
+              <li class="fa fa-search"></li>
+            </span>
+            <input type="text" class="form-control" style="width: 300px" placeholder="Type to Search" ng-model="search">
+
+
+            <div style="width:600px;border-left:0" >
+              
+            </div>
+            <!-- <span class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{selectedGroup}} <span class="caret"></span></button>
+                <ul class="dropdown-menu pull-right">
+                  <li ng-repeat="group in groups">
+                   <a ng-click="dropboxitemselected(group)">{{group.name}}</a>
+                </ul>
+          </span> -->
+
+            <a class="btn btn-success pull-right" ui-sref="dashboard.manage.score.new"><i class="glyphicon glyphicon-plus"></i> 新建规则</a>
+            
+          </div>
+          
+      </div>
+      <div class="panel-body">
+        <div style="height: 400px; margin: 0 auto">
+          <table class="table table-bordered table-hover">
+            <tr class="table-head">
+              <th class="text-center" custom-sort order="'_id'" sort="sort">
+                规则ID
+              </th>
+              <th class="text-center" custom-sort order="'name'" sort="sort">
+                规则名称
+              </th>
+              <th class="text-center" custom-sort order="'creationTime'" sort="sort">
+                创建时间
+              </th>
+              <th class="text-center">
+                操作
+              </th>
+            </tr>
+            <tr ng-repeat="rule in rules.slice(((bigCurrentPage-1)*itemsPerPage), ((bigCurrentPage)*itemsPerPage))|orderBy:sort.sortingOrder:sort.reverse|filter:search" ng-class="{'highlight':search.toLowerCase()==rule.name.toLowerCase()}">
+              <td class="text-center"><a href="#/dashboard/manage/score/list/score/{{rule._id.$oid}}">{{rule._id.$oid | cut:true:10:' ...'}}</a></td>
+              <!-- <td class="text-center">
+              <a href="{{rule.url}}" uib-tooltip="{{rule.url}}">{{rule.url | cut:true:20:' ...'}}</a>
+              </td> -->
+              <td class="text-center">{{rule.name}}</td>
+              <td class="text-center">{{rule.creationTime}}
+              </td>
+              <td class="text-center">
+                <!-- <a ng-click="runrule(rule._id.$oid)"><button type="button" class="btn btn-primary"><span class="fa fa-{{operation.icon}}" ></span>{{operation.text}}</button></a> -->
+                <a href="#/dashboard/manage/score/list/score/{{rule._id.$oid}}"><button type="button" class="btn btn-info"><span class="fa fa-pencil" ></span>编辑</button></a>
+                <button type="button" class="btn btn-warning" ng-click="deleteItemWithConfirmation(rule)"><span class="fa fa-trash-o"></span>删除</button>
+              </td>
+          </tr>
+        </table>
+        <uib-pagination total-items="bigTotalItems" items-per-page="itemsPerPage" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+        
+        </div>
+      </div>
+    </div>
+
+
+</div>

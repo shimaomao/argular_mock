@@ -1,0 +1,12 @@
+<div class="col-md-3">
+    <div class="btn-group btn-block">
+        <span class="col-sm-4 btn btn-danger">{{name}}</span>
+        <a class="col-sm-7 btn btn-rounded btn-default dropdown-toggle" data-toggle="dropdown"> {{default}}
+            <span class="caret"></span>
+        </a> 
+ 
+        <ul class="dropdown-menu btn-block">
+            <li ng-repeat="item in items"><a href="#">{{item.name}}</a></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-lg-10 ">
+        <h1 class="page-header">{{group.name}}<button type="submit" ng-click="modifyModal()" class="btn btn-success btn pull-right">修改分组名</button></h1>
+
+    </div>  
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="col-sm-12 col-sm-offset-1">
+    <form class="form-horizontal">
+    
+    <div class="form-group">
+      <div class="col-sm-9">
+        <div class="table-responsive">
+
+                
+              <table id="mytable" class="table table-bordred table-striped head-table">
+                   
+                   <thead>
+                   
+                   <th><input type="checkbox" id="checkall" ng-model="allItemsSelected" ng-change="selectAll()"/></th>
+                   <th>页面名称</th>
+                   <th>URL</th>
+                   <th>创建时间</th>
+                   <th>操作</th>
+                   </thead>
+    <tbody>
+    
+    <tr ng-repeat="task in group.tasks" ng-class="{selected: task.isChecked}">
+    <td class="text-center"><input type="checkbox" ng-model="task.isChecked" ng-change="selectTask()" /></td>
+    <td>{{task.pageName}}</td>
+    <td><a href="{{task.url}}" uib-tooltip="{{task.url}}">{{task.url | cut:true:20:' ...'}}</a></td>
+    <td>{{task.creationTime}}</td>
+    <td>
+      <a href="#/dashboard/manage/task/{{task._id.$oid}}">
+        <button type="button" class="btn btn-info">
+          <span class="fa fa-pencil" ></span>
+          编辑
+        </button>
+      </a>
+      <button type="button" class="btn btn-warning" ng-click="deleteItemWithConfirmation(task)"><span class="fa fa-trash-o"></span>删除</button>
+    </td>
+    </tr>
+    
+    
+   
+    
+   
+    
+    </tbody>
+        
+</table>
+
+                
+            </div>
+  </div>
+  </div>
+  <!-- <div class="form-group">
+      <label class="col-sm-1 control-label" for="name">规则描述</label>
+      <div class="col-sm-8">
+        <textarea type="text" class="form-control" ng-model="scoreRule.desc" id="desc"/>
+      </div>
+    </div> -->
+  <div class="form-group">
+    <div class="col-sm-offset-6 col-sm-3">
+    <button id="batchAdd" type="submit" class="btn btn-primary btn" ng-click="batchAdd()">批量添加</button>
+    <button id="batchDelete" type="submit" class="btn btn-info btn" ng-click="batchDel()">批量移除</button>
+    <button id="cancel" type="button" class="btn btn-warning btn pull-right">取消</button>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    $('[rel="popover"]').popover();
+    $('#cancel').click(function(){
+        parent.history.back();
+        return false;
+    });
+    
+    </script>
+  </div>
+    </form>
+    </div>

@@ -1,0 +1,29 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class='page-header'>
+                <!-- <div class='btn-toolbar pull-right'>
+                    <div class='btn-group'>
+                        <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown">{{selectedItem}}<span class="caret"></span></button>
+                        <ul class="dropdown-menu pull-right">
+                            <li ng-repeat="page in pages">
+                                <a ng-click="dropboxitemselected(page.pageName)">{{page.pageName}}</a>
+                        </ul>
+                    </div>
+                </div> -->
+                <h1>质量概况</h1>
+            </div>
+        </div>
+        
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        
+        <stats number="43个" comments="新增用例" colour="primary" type="list-ul" goto="#/dashboard/detail"></stats>
+        <stats number="12个" comments="新增bug" colour="yellow" type="bug" goto="#/dashboard/detail"></stats>
+        <stats number="412个" comments="静态扫描问题" colour="primary" type="warning" goto="#/dashboard/detail"></stats>
+        <stats number="0.023%" comments="Android线上崩溃率" colour="red" type="chain-broken" goto="#/dashboard/andriod/crash"></stats>
+
+    </div>
+    <charts></charts>
+</div>

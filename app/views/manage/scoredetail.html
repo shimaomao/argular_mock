@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">编辑评分规则</h1>
+    </div>  
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="col-sm-12 col-sm-offset-1">
+    <form class="form-horizontal" ng-submit="save()">
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="name">规则名称</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" ng-model="scoreRule.name" id="name" required/>
+      </div>
+      <!-- <label class="col-sm-1 control-label" for="name">规则标签</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" ng-model="scoreRule.tags" id="name" required/>
+      </div> -->
+    </div>
+    <div class="form-group">
+      <label class=" col-sm-1 control-label">规则详情</label>
+      <div class="col-sm-8">
+        <table class="head-table table table-hover">
+          <thead>
+          <tr>
+      <th>规则项  </th>
+      <th>预设值 <i class="fa fa-question-circle fa-2" uib-tooltip="默认允许的最大值，超过该值则会进行扣分操作"></i></th>
+      <th>扣分 <i class="fa fa-question-circle fa-2" uib-tooltip="每超过预设值一个单位，扣除的分数"></i></th>
+      <th>是否启用</th>
+    </tr>
+    </thead>
+    <tr ng-repeat="rule in scoreRule.rules">
+
+    <td>{{rule.desc}}</td>
+    <td>
+      <div class="col-sm-5 div-table input-group" style="width:125px">
+        <input class="form-control" ng-model="rule.rule.max" ng-disabled="!rule.enable">
+        <span class="input-group-addon">{{rule.unit}}</span>
+      </div>
+    </td>
+    <td>
+      <div class="col-sm-6 div-table">
+      <input class="form-control" ng-model="rule.rule.punish" ng-disabled="!rule.enable" uib-tooltip="每超过1'{{rule.unit}}'扣'{{rule.rule.punish}}'分">
+      </div>
+    </td>
+    <td>
+    <div class="onoffswitch-container">
+    <div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" ng-model="rule.enable" id="{{rule.desc}}" class="onoffswitch-checkbox" checked>
+    <label class="onoffswitch-label" for="{{rule.desc}}">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+    </div>
+    </div>
+    </td>
+    </tr>
+  </table>
+  </div>
+  </div>
+  <!-- <div class="form-group">
+      <label class="col-sm-1 control-label" for="name">规则描述</label>
+      <div class="col-sm-8">
+        <textarea type="text" class="form-control" ng-model="scoreRule.desc" id="desc"/>
+      </div>
+    </div> -->
+  <div class="form-group">
+    <div class="col-sm-offset-6 col-sm-3">
+    <button id="save" type="submit" class="btn btn-primary btn-lg">保存</button>
+      <button id="cancel" type="button" class="btn btn-warning btn-lg pull-right">取消</button>
+
+    </div>
+    <script type="text/javascript">
+    $('[rel="popover"]').popover();
+    $('#cancel').click(function(){
+        parent.history.back();
+        return false;
+    });
+    
+    </script>
+  </div>
+  </div>
+    </form>

@@ -1,0 +1,63 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+            <sidebar-search></sidebar-search>
+            <!-- <li ui-sref-active="active">
+                <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> 质量概况</a>
+            </li> -->
+            <li ng-class="{active: collapseVar==1}">
+                <a href="" ng-click="check(1)"><i class="fa fa-android fa-fw"></i> 书旗Andriod客户端<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.android"><i class="fa fa-dashboard fa-fw"></i> 整体概况</a>
+                    </li>
+                </ul>
+            </li>
+           <li ng-class="{active: collapseVar==2}">
+                <a href="" ng-click="check(2)"><i class="fa fa-apple fa-fw"></i> 书旗iOS客户端<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=2">
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.ios"><i class="fa fa-dashboard fa-fw"></i> 整体概况</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: collapseVar==3}">
+                <a href="" ng-click="check(3)"><i class="fa fa-android fa-fw"></i> 淘宝阅读Andriod客户端<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=3">
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.tbandroid"><i class="fa fa-dashboard fa-fw"></i> 整体概况</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: collapseVar==4}">
+                <a href="" ng-click="check(4)"><i class="fa fa-android fa-fw"></i> 淘宝阅读iOS客户端<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=4">
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.tbios"><i class="fa fa-dashboard fa-fw"></i> 整体概况</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li ui-sref-active="active">
+                <a ui-sref="dashboard.query"><i class="fa fa-area-chart fa-fw"></i> 历史查询</a>
+            </li> -->
+            <!-- <li ng-class="{active: collapseVar==3}">{{dropDown}}
+                <a href="" ng-click="check(3)"><i class="fa fa-html5 fa-fw"></i> 书旗网页端<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=3">
+                    <li ui-sref-active="active">
+                        <a ui-sref="dashboard.h5"><i class="fa fa-dashboard fa-fw"></i> 整体概况</a>
+                    </li>
+                </ul>
+            </li> -->
+            
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div> 
+
+
+

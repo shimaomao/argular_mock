@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">新建任务</h1>
+    </div>  
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="col-md-offset-1">
+    <form class="form-horizontal" ng-submit="save()">
+
+    <div class="form-group">
+  <label for="url" class="col-sm-2 control-label">Url</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" ng-model="task.url" id="url" required/>
+    </div>
+    <a tabindex="0" id="preview" class="btn btn-info" data-trigger="focus"  rel="popover" data-html="true" data-content='<iframe frameborder="0" scrolling="yes" src={{task.url}} width="340px" height="600px"></iframe>'>预览</a>
+  </div>
+        <div class="form-group">
+    <label for="pageName" class="col-sm-2 control-label">页面名称</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" ng-model="task.pageName" id="pageName" required/>
+    </div>
+     <label for="device" class="col-sm-2 control-label">Device</label>
+    <div class="col-sm-2">
+      <select class="form-control" id="device" ng-model="task.device" ng-options="device for device in data.devices" required>
+        <option value="">请选择</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="group" class="col-sm-2 control-label">分组</label>
+    <div class="col-sm-2">
+      <select class="form-control" id="group" ng-model="task.groupId" ng-options="group._id.$oid as group.name for group in groups">
+        <option value="">请选择</option>
+      </select>
+
+    </div>
+    <div class="col-sm-2">
+      <label class="btn btn-success" ng-click="addGroup()">新建分组</label>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="rule" class="col-sm-2 control-label">关联评分规则</label>
+      <div class="col-sm-2">
+      <select class="form-control" id="rule" ng-model="task.rule" ng-options="rule._id.$oid as rule.name for rule in rules" required>
+        <option value="">请选择</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="desc" class="col-sm-2 control-label">描述</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" ng-model="task.desc" id="desc" rows="5" />
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-5 col-sm-3">
+    <button id="save" type="submit" class="btn btn-primary btn-lg">保存</button>
+      <button id="cancel" type="button" class="btn btn-warning btn-lg pull-right">取消</button>
+
+    </div>
+    <script type="text/javascript">
+    $('[rel="popover"]').popover();
+    $('#cancel').click(function(){
+        parent.history.back();
+        return false;
+    });
+    
+    </script>
+  </div>
+  </div>
+    </form>

@@ -1,0 +1,164 @@
+<div id="container" style="margin : 0px auto; margin-top : 12px; min-height : 1007px;">
+        
+    <div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">性能详情——{{result.pageName}}</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+    </div>
+    <div id="menu-bar">
+        <!-- <div class="menus">
+            <li class="menu active"><a href="#" aria-controls="overview" role="tab" data-toggle="tab">性能概况</a></li>
+            <li class="menu"><a href="#" aria-controls="detail" role="tab" data-toggle="tab">性能详情</a></li>
+            <li class="menu last-menu"><a href="#" aria-controls="shoots" role="tab" data-toggle="tab">截图</a></li>
+        </div> -->
+        <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a data-target="#overview" aria-controls="overview" role="tab" data-toggle="tab">测试概览</a></li>
+            <li role="presentation"><a data-target="#detail" aria-controls="detail" role="tab" data-toggle="tab">详情</a></li>
+            <li role="presentation"><a data-target="#shoots" aria-controls="shoots" role="tab" data-toggle="tab">截图</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active result-info h5-overview" id="overview">
+        <div class="overview-box _overview">
+            <div class="norm1 clearfix">
+                <div class="n syn">
+                    <b>{{result.score}}</b>
+                    <span>分</span>
+                    <p>评分</p>
+                </div>
+            <div class="n warn serverResponseInterval ">
+                <b>{{result.contentLoad}}</b>
+                <span>ms</span>
+                <p>首资源时间</p>
+            </div>
+            <div class="n onRender">
+                <b>{{result.firstRenderTime}}</b>
+                <span>s</span>
+                <p>首次渲染时间</p>
+            </div>
+            <div class="n firstScreenOKInterval">
+                <b>{{result.domComplete}}</b>
+                <span>s</span>
+                <p>首屏时间</p>
+            </div>
+            <div class="n totalUrlSize">
+                <b>{{result.pageSize}}</b>
+                <span>KB</span>
+                <p>网页大小</p>
+            </div>
+            <div class="n mainUrlDomNum">
+                <b>{{result.domNum}}</b>
+                <span>个</span>
+                <p>DOM节点总数</p>
+            </div>
+            <div class="n failResourcesNum">
+                <b>{{result.notFound}}</b>
+                <span>个</span>
+                <p>失败资源数</p>
+            </div>
+            <div class="n redirectNum">
+                <b>{{result.redirects}}</b>
+                <span>个</span>
+                <p>重定向数</p>
+            </div>
+        </div>
+        <div class="table-list clearfix">
+            <div class="res-type">
+                <div id="resDomainPie"></div>
+            </div>
+            <div class="res-domain _resDomain">
+                <div class="tabel-b">
+                    <table class="table table-hover" cellspacing="0" cellpadding="0">
+                        <caption>域名资源统计</caption>
+                        <thead><tr><td></td><th>数量(个)</th></tr></thead>
+                        <tbody>
+                            <tr ng-repeat="domain in result.domainInfo">
+                                <th><span class="fa fa-html5"> {{domain.name}}</span></th>
+                                <td>{{domain.y}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="table-list clearfix">
+            <div class="res-type">
+                <div id="resTypePie"></div>
+            </div>
+            <div class="res-domain _resDomain">
+                <div class="tabel-b">
+                    <table class="table table-hover" cellspacing="0" cellpadding="0">
+                        <caption>资源类型统计</caption>
+                        <thead><tr><td></td><th>大小(KB)</th><th>数量(个)</th></tr></thead>
+                        <tbody>
+                            <tr ng-repeat="resource in result.resourceInfo">
+                                <th><span class="title {{resource.name}}">{{resource.name}}</span></th>
+                                <td>{{resource.size}}</td>
+                                <td>{{resource.y}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 评分详情开始 -->
+        <div class="rule-list">
+        <div>
+            <table class="table table-hover" cellspacing="0" cellpadding="0">
+            <caption>评分详情列表</caption>
+            <thead>
+                <tr>
+                    <th>评分内容</th>
+                    <th>扣分</th>
+                    <th>问题详情</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="scoreDetail in scoreDetails">
+                    <th>{{scoreDetail.name}}</th>
+                    <td class="lv">{{scoreDetail.punish}}</td>
+                    <td class="desc">{{scoreDetail.actual}}（实际值） > {{scoreDetail.default}}（预设值） <span>{{scoreDetail.unit}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+<!-- 评分详情结束 -->
+    </div>
+
+    </div>
+    <div role="tabpanel" class="tab-pane result-info h5-overview" id="detail">
+        <div class="har-box _har">
+            <div class="report-content" style="display: block;"><ul class="block-tip">
+                <li class="dns"><span></span>DNS Lookup</li>
+                <li class="connecting"><span></span>Connecting</li>
+                <li class="sending"><span></span>Sending</li>
+                <li class="waiting"><span></span>Waiting</li>
+                <li class="receiving"><span></span>Receiving</li>
+            </ul>
+            <div class="HAR"><div style="margin-left:8px;">
+
+            </div></div></div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="shoots">comming soon...</div>
+</div>
+
+        
+            
+
+
+            <!-- <div class="screenshot-list _shots" style="display: none;">
+                <ul class="clearfix" id="image-area"><li class="img-block has-video"><div class="img-container"><div class="cover"></div><div class="tip">点击查看大图</div><div class="second-level video-btn"></div><img src="http://matp-test.cn-hangzhou.oss.aliyun-inc.com/nfsdata/result/cfcd208495d565ef66e7dff9f98764da/244364/H5/1__1_screen_1448943686165.jpg"></div><div class="request-url"><span class="browser-icon" style="background-position: 0 0"></span><span class="browser-name">原生浏览器</span></div></li><div class="clear"></div></ul>
+                <div id="pagination" class="Pagination-div">
+                    <div class="Pagination-wrap">
+                        <div id="Pagination-control" class="Pagination-Div">
+                        </div>
+                    </div>
+                </div>
+            </div> -->  
+
+
+
+</div>

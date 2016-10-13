@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title> Har Preview </title>
+</head>
+<body  class="">
+
+<script>
+var isIE11 = (/Trident\/7\./).test(navigator.userAgent);
+var isIE = !-[1,];
+if (isIE || isIE11){
+    document.write('<div style="width : 100%; height : 100%; position : absolute; background-color : white; top : 0px; left : 0px; z-index:999; ">本网站暂不支持ie，请更换浏览器</div>');
+}
+</script>
+
+
+
+<style type="text/css">
+    .harViewBar {
+        display:none;
+    }
+    div.harViewBodies {
+        position:static;
+    }
+    table.pageTable {
+        width:98%;
+    }
+</style>
+<div id="content"></div>
+
+<script src="http://100.85.22.153:9000/scripts/har/jquery.js"></script>
+<script data-main="http://100.85.22.153:9000/scripts/har/home" src="http://100.85.22.153:9000/scripts/har/require.js"></script>
+<link rel="stylesheet" href="http://100.85.22.153:9000/styles/har/harViewer.min.css" type="text/css"/>
+<script>
+    $(".Common-head").hide();
+    $(".harBody").css("padding", "0");
+    $(".Common-hr").hide().next().hide();
+</script>
+
+
+
+
+</body>

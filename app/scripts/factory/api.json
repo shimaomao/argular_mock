@@ -1,0 +1,103 @@
+
+//主页接口
+//
+{
+    "errno" : 0,
+    "errmsg" : "success",
+    "data" : {
+        "id" : 1231313,
+        "score" : 87,
+        "score_trends" :{
+            "title" : "质量得分走势",
+            "detail" : [
+                {
+                    "id" : 831233,
+                    "version" : "9.3.1",
+                    "value" : 67
+                },
+                {
+                    "id" : 831233,
+                    "version" : "9.4.1",
+                    "value" : 67
+                },
+                {
+                    "id" : 831233,
+                    "version" : "9.5.1",
+                    "value" : 67
+                }
+            ]    
+        },
+        "perf_info" : {},//保持之前一致
+        "production_quality" : {
+            "score": 54,
+            "max" : 60,
+            "trends" : "-10",
+            "id" : 2123123
+        },
+         "process_quality" : {
+            "score": 54,
+            "max" : 60,
+            "trends" : "-10",
+            "id" : 2123123
+        },
+         "develop_quality" : {
+            "score": 54,
+            "max" : 60,
+            "trends" : "-10",
+            "id" : 2123123
+        },
+
+    }
+}
+
+//详情页接口
+//传入version_id
+{
+    "errno" : 0,
+    "errmsg" : "success",
+    "data" : {
+        "id" : 2312313,
+        "version" : "9.4.1",
+        "production_quality" : [
+            {
+                "name" : "缺陷密度",
+                "score" : 32, //根据规则计算的得分
+                "value" : "3", //实际得到的值
+                "unit" : "%", //单位
+                "max" : 40, //总分
+                "rule" : "fsdff", //算分规则
+                "desc" : "23asdasd", //计算公式
+            },
+            ...
+        ]
+    }
+}
+
+
+//查询页接口
+//params: version_start,version_end,day_start,day_end,query_type(0 版本质量,1 产品质量,2过程质量,3研发质量, 4预留字段)
+{
+    "errno" : 0,
+    "errmsg" : "success",
+    "data" : {
+        "title" : "质量得分走势",
+        "detail" : [
+            {
+                "id" : 831233,
+                "name" : "9.3.1",
+                "value" : 67
+            },
+            {
+                "id" : 831233,
+                "name" : "9.3.1", //"name" : "20160427"
+                "value" : 67
+            },
+            ...
+        ]
+    }   
+}
+
+
+
+
+

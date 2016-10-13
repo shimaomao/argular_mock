@@ -1,0 +1,64 @@
+<div id="container" style="margin : 0px auto; margin-top : 12px; min-height : 1007px;">
+        
+    <div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">版本质量详情——{{result.version}}</h1>
+    </div>
+
+    </div>
+    <div id="menu-bar">
+        <!-- <ul class="nav nav-tabs" role="tablist" id="tabs">
+            <li role="presentation" class="active"><a data-target="#overview" aria-controls="overview" role="tab" data-toggle="tab">产品质量得分</a></li>
+            <li role="presentation"><a data-target="#detail" aria-controls="detail" role="tab" data-toggle="tab">过程质量得分</a></li>
+            <li role="presentation"><a data-target="#shoots" aria-controls="shoots" role="tab" data-toggle="tab">研发质量得分</a></li>
+        </ul> -->
+        <ul class="nav nav-tabs">
+            <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.id)}"><a data-ng-click="onClickTab(tab.id)">{{tab.name}}</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+    <div role="tabpanel" ng-class="isActiveTab('product_quality') ? 'tab-pane active result-info h5-overview': 'tab-pane result-info h5-overview'" id="product_quality">
+        
+        <div class="overview-box _overview" ng-repeat="data in result.product_quality">
+            <card id="{{data.id}}" name="{{data.name}}" value="{{data.value}}" current="{{data.score}}" max="{{data.max}}" trends="{{data.trends}}" unit="{{data.unit}}" calculation="{{data.cal_value.length > 0 ? data.cal_value:data.calculation}}" desc="{{data.desc}}" stroke="{{data.value.length>0?15:0}}"></card>
+                        
+        
+        
+        </div>
+    </div>
+    <div role="tabpanel" ng-class="isActiveTab('process_quality') ? 'tab-pane active result-info h5-overview': 'tab-pane result-info h5-overview'" id="process_quality">
+        <div class="overview-box _overview" ng-repeat="data in result.process_quality">
+            <card id="{{data.id}}" name="{{data.name}}" value="{{data.value}}" current="{{data.score}}" max="{{data.max}}" trends="{{data.trends}}" unit="{{data.unit}}" calculation="{{data.cal_value.length > 0 ? data.cal_value:data.calculation}}" desc="{{data.desc}}"></card>
+                        
+        
+        
+        </div>
+    </div>
+    <div role="tabpanel" ng-class="isActiveTab('dev_quality') ? 'tab-pane active result-info h5-overview': 'tab-pane result-info h5-overview'" id="dev_quality">
+        <div class="overview-box _overview" ng-repeat="data in result.dev_quality">
+            <card id="{{data.id}}" name="{{data.name}}" value="{{data.value}}" current="{{data.score}}" max="{{data.max}}" trends="{{data.trends}}" unit="{{data.unit}}" calculation="{{data.cal_value.length > 0 ? data.cal_value:data.calculation}}" desc="{{data.desc}}"></card>
+                        
+        
+        
+        </div>
+
+    </div>
+</div>
+
+        
+            
+
+
+            <!-- <div class="screenshot-list _shots" style="display: none;">
+                <ul class="clearfix" id="image-area"><li class="img-block has-video"><div class="img-container"><div class="cover"></div><div class="tip">点击查看大图</div><div class="second-level video-btn"></div><img src="http://matp-test.cn-hangzhou.oss.aliyun-inc.com/nfsdata/result/cfcd208495d565ef66e7dff9f98764da/244364/H5/1__1_screen_1448943686165.jpg"></div><div class="request-url"><span class="browser-icon" style="background-position: 0 0"></span><span class="browser-name">原生浏览器</span></div></li><div class="clear"></div></ul>
+                <div id="pagination" class="Pagination-div">
+                    <div class="Pagination-wrap">
+                        <div id="Pagination-control" class="Pagination-Div">
+                        </div>
+                    </div>
+                </div>
+            </div> -->  
+
+
+
+</div>
